@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://01gdm3h22d4j"]
+
+[ext_resource type="Script" uid="uid://xeqpniy74665" path="res://circle_mesh_array_2.gd" id="1_wqp0f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l0ubm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_p08hn"]
+sky_material = SubResource("ProceduralSkyMaterial_l0ubm")
+
+[sub_resource type="Environment" id="Environment_8b2ko"]
+background_mode = 2
+sky = SubResource("Sky_p08hn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqp0f"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p08hn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wqp0f"]
+size = Vector3(50, 1, 50)
+
+[node name="Node3D" type="Node3D" unique_id=1402359541]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2052067471]
+environment = SubResource("Environment_8b2ko")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2116780699]
+transform = Transform3D(0.85238385, 0.51458836, -0.09295498, 0.15310702, -0.41557056, -0.8965822, -0.5000001, 0.7500001, -0.43301275, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Circle MeshArray" type="MeshInstance3D" parent="." unique_id=1461261453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58155906, 0)
+material_override = SubResource("StandardMaterial3D_wqp0f")
+mesh = SubResource("ArrayMesh_p08hn")
+script = ExtResource("1_wqp0f")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1838115176]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.959042, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=217281514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1171211, 0)
+mesh = SubResource("BoxMesh_wqp0f")
